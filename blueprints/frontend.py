@@ -150,9 +150,9 @@ async def settings_avatar_post():
             os.remove(f'{AVATARS_PATH}/{session["user_data"]["id"]}{fx}')
 
     # avatar change success
-    avatar.save(os.path.join(AVATARS_PATH, f'{session["user_data"]["id"]}{file_extension.lower()}'))
+    await avatar.save(os.path.join(AVATARS_PATH, f'{session["user_data"]["id"]}{file_extension.lower()}'))
     return await flash('success', 'Your avatar has been successfully changed!', 'settings/avatar')
-
+    # you missed an await up there ^^^ -Electro
 @frontend.route('/settings/password')
 async def settings_password():
     if 'authenticated' not in session:
